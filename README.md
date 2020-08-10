@@ -1,24 +1,6 @@
-# geo-message
+Geo-message - Send message accross the world.
+(In order to use service, user is required to register and allow browser for fetching geolocation data.)
 
-## Project setup
-```
-npm install
-```
+Techstack: HTML5; CSS3; JavaScript; Vue.js; Router; Firebase Cloud Services: DB, Hosting, Auth2.0, Function, CLI; Google Cloud Platform (Maps JS API); Geolocation API; Materialize; Slugify; NPM; GIT.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Check it out on https://geoo-msg.web.app/
