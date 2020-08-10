@@ -2,18 +2,25 @@
   <div class="navbar">
     <nav class="blue darken-1">
       <div class="container">
-        <router-link class="brand" :to="{ name: 'GMap' }"
+        <router-link class="brand-logo left" :to="{ name: 'GMap' }"
           >Geomessage</router-link
         >
         <ul class="right">
           <li>
-            <router-link :to="{ name: 'SignUp' }">Signup</router-link>
+            <router-link v-if="!this.user" :to="{ name: 'SignUp' }"
+              >Signup</router-link
+            >
           </li>
           <li>
-            <router-link :to="{ name: 'Login' }">Login</router-link>
+            <router-link v-if="!this.user" :to="{ name: 'Login' }"
+              >Login</router-link
+            >
           </li>
           <li>
-            <a @click="logout">Logout</a>
+            <a v-if="this.user"> {{ this.user.email }}</a>
+          </li>
+          <li>
+            <a v-if="this.user" @click="logout">Logout</a>
           </li>
         </ul>
       </div>
@@ -26,7 +33,9 @@ import firebase from "firebase";
 export default {
   name: "Navbar",
   data() {
-    return {};
+    return {
+      user: null
+    };
   },
   methods: {
     logout() {
@@ -37,6 +46,15 @@ export default {
           this.$router.push({ name: "Login" });
         });
     }
+  },
+  created() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.user = user;
+      } else {
+        this.user = null;
+      }
+    });
   }
 };
 </script>

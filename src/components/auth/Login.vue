@@ -1,7 +1,7 @@
 <template>
   <div class="login container">
     <form class="card-panel" @submit.prevent="login">
-      <h2 class="center deep-purple-text">Login</h2>
+      <h2 class="center blue-text">Login</h2>
       <div class="field">
         <label for="email">Email</label>
         <input id="email" type="email" v-model="email" />
@@ -12,7 +12,7 @@
       </div>
       <p v-if="feedback" class="red-text center">{{ feedback }}</p>
       <div class="field center">
-        <button class="btn deep-purple">Login</button>
+        <button class="btn green">Login</button>
       </div>
     </form>
   </div>
@@ -36,8 +36,7 @@ export default {
         firebase
           .auth()
           .signInWithEmailAndPassword(this.email, this.password)
-          .then(cred => {
-            console.log(cred.user);
+          .then(() => {
             this.$router.push({ name: "GMap" });
           })
           .catch(err => {
